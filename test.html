@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>  
+        <title>Vue</title>
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <div id="app">
+            <button @click="subNum">-</button>
+            <span>{{ num_temp }}</span>
+            <button @click="addNum">+</button>
+            <p @click="changeFood"> {{ food }} </p>
+            <input type="button" value="点击绑定方法功能" v-on:click="doQuant">
+            <input type="button" value="点击绑定方法功能@" @click="doQuant">
+            <input type="button" value="双击绑定方法功能@" @dblclick="doQuant">
+            {{ message }}
+            <h1>{{ school }}</h1>
+            <h1>{{ school[1] }}</h1>
+            <h1>{{ school_2.first }}</h1>
+            <h2>{{ school[1] }} 深圳</h2>
+            <h2 v-text="message">{{ scchool }}深圳</h2>
+            <p v-html="content"></p>
+        </div>
+        <script>
+            var app = new Vue({
+                el:"#app",
+                data:{
+                    content:"<a href='http://www.baidu.com'>百度</a>",
+                    message:"你好，岳梁",
+                    school:["清华","北大"],
+                    school_2:{
+                        first:"清华",
+                        second:"北大"
+                    },
+                    food:"西红柿",
+                    num_temp:0
+                },
+                methods:{
+                    doQuant:function(){
+                        alert("你好，岳梁")
+                    },
+                    changeFood:function(){
+                        console.log(this.food+="1 ")
+                    },
+                    subNum:function(){
+                        if(this.num_temp<=0){
+                            alert("已达到零，不能再减了")
+                        }else{
+                            this.num_temp -= 1
+                        }
+                        
+                    },
+                    addNum:function(){
+                        if(this.num_temp>=10){
+                            alert("已达到最大，不能再加了")
+                        }else{
+                            this.num_temp += 1
+                        }
+                        
+                    }
+            
+                }
+            })
+        </script>
+    </body>
+</html>
